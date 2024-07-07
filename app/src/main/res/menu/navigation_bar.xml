@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Home"
+        android:id="@+id/nav_bar_home"
+        android:icon="@drawable/home_screen"
+        />
+    <item android:title="Portfolios"
+        android:id="@+id/nav_bar_portfolios"
+        android:icon="@drawable/portfolio_list_screen"
+        />
+    <item android:title="Assets"
+        android:id="@+id/nav_bar_assets"
+        android:icon="@drawable/assets_list_screen"
+        />
+    <item android:title="Settings"
+        android:id="@+id/nav_bar_settings"
+        android:icon="@drawable/settings_screen"
+        />
+</menu>
