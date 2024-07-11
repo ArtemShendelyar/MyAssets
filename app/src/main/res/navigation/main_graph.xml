@@ -8,17 +8,7 @@
         android:id="@+id/fragment_home"
         android:name="com.example.myassets.presentation.ui.home.HomeFragment"
         android:label="homepage"
-        tools:layout="@layout/fragment_home">
-        <action
-            android:id="@+id/action_fragment_home_to_portfolio_list_fragment"
-            app:destination="@id/portfolio_list_fragment" />
-        <action
-            android:id="@+id/action_fragment_home_to_fragment_settings"
-            app:destination="@id/fragment_settings" />
-        <action
-            android:id="@+id/action_fragment_home_to_asset_list_fragment"
-            app:destination="@id/asset_list_fragment" />
-    </fragment>
+        tools:layout="@layout/fragment_home"/>
     <fragment
         android:id="@+id/asset_list_fragment"
         android:name="com.example.myassets.presentation.ui.assets.AssetListFragment"
