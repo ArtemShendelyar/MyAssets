@@ -6,7 +6,6 @@ buildscript {
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -53,6 +52,4 @@ dependencies {
     androidTestImplementation libs.androidx.espresso.core
     implementation libs.androidx.navigation.fragment.ktx
     implementation libs.androidx.navigation.ui.ktx
-
-
 }
