@@ -23,7 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:minHeight="70dp"
-        app:menu="@menu/navigation_bar"
-        />
+        app:menu="@menu/navigation_bar" />
 
 </LinearLayout>
