@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.myassets.presentation.ui.home.HomeFragment"
+        android:label="homepage"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:popUpTo="@id/homeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_assetListFragment"
+            app:destination="@id/assetListFragment"
+            app:popUpTo="@id/homeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_portfolioListFragment"
+            app:destination="@id/portfolioListFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/assetListFragment"
+        android:name="com.example.myassets.presentation.ui.assets.AssetListFragment"
+        android:label="assetslist"
+        tools:layout="@layout/fragment_asset_list" />
+    <fragment
+        android:id="@+id/portfolioListFragment"
+        android:name="com.example.myassets.presentation.ui.portfolios.ProtfolioListFragment"
+        android:label="portfolio"
+        tools:layout="@layout/fragment_protfolio_list" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.myassets.presentation.ui.settings.SettingsFragment"
+        android:label="settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>
