@@ -1,27 +1,13 @@
 package com.example.myassets.presentation.ui.portfolios
 
-import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.example.myassets.databinding.FragmentProtfolioListBinding
+import com.example.myassets.presentation.util.BasicFragment
 
-class ProtfolioListFragment : Fragment() {
-    private var _binding: FragmentProtfolioListBinding? = null
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
+class ProtfolioListFragment : BasicFragment<FragmentProtfolioListBinding>() {
+    override fun inflateViewBinding(
         inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentProtfolioListBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+        container: ViewGroup?
+    ) = FragmentProtfolioListBinding.inflate(inflater, container, false)
 }
