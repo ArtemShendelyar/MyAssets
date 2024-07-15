@@ -4,7 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.myassets.databinding.FragmentSettingsBinding
 import com.example.myassets.presentation.util.BasicFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SettingsFragment : BasicFragment<FragmentSettingsBinding>() {
     override fun inflateViewBinding(
         inflater: LayoutInflater,
