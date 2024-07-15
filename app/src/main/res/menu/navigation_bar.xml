@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fragment_home"
+        android:icon="@drawable/home_screen"
+        android:title="@string/nav_bar_home" />
+    <item
+        android:id="@+id/portfolio_list_fragment"
+        android:icon="@drawable/portfolio_list_screen"
+        android:title="@string/nav_bar_portfolios" />
+    <item
+        android:id="@+id/asset_list_fragment"
+        android:icon="@drawable/assets_list_screen"
+        android:title="@string/nav_bar_assets" />
+    <item
+        android:id="@+id/fragment_settings"
+        android:icon="@drawable/settings_screen"
+        android:title="@string/nav_bar_settings" />
+</menu>
