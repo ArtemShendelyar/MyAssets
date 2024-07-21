@@ -1,7 +1,7 @@
-package domain.repository
+package data.datasource.interfaces
 
 import domain.entity.Portfolio
 
-interface PortfolioListRepository {
+interface PortfolioDataSource {
     fun getPortfolios(): List<Portfolio>
 }

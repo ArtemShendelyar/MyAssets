@@ -1,10 +1,11 @@
 package domain.entity
 
-import java.util.Date
+import java.time.LocalDate
 
 data class PortfolioItem(
     val id: Int,
+    val name: String,
     val asset: Asset,
     val priceCurrency: String,
-    val priceHistory: Map<Date, Double>
+    val priceHistory: Map<LocalDate, Double>
 )

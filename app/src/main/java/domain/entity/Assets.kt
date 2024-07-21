@@ -1,27 +1,25 @@
 package domain.entity
 
-import java.util.Date
+import java.time.LocalDate
 
 open class Asset(
-    open val id: Int,
-    open val name: String
+    open val id: Int
 )
 
 data class Cash(
     override val id: Int,
-    override val name: String,
     val currency: String
-) : Asset(id, name)
+) : Asset(id)
 
 data class Stock(
     override val id: Int,
-    override val name: String,
-    val dividendYearPercentage: Double
-) : Asset(id, name)
+    val ticker: String
+) : Asset(id)
 
 data class Bond(
     override val id: Int,
-    override val name: String,
-    val couponYearPercentage: Double,
-    val maturityDate: Date
-) : Asset(id, name)
+    val issueDate: LocalDate,
+    val maturityDate: LocalDate,
+    val nominalPrice: Double,
+    val couponPayments: Map<LocalDate, Double>
+) : Asset(id)
