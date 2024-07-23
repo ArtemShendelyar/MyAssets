@@ -2,6 +2,7 @@ package domain.interactors
 
 import domain.entity.PortfolioItem
 import domain.repository.PortfolioItemRepository
+import domain.utils.resultOf
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -14,13 +15,9 @@ class PortfolioItemInteractor @Inject constructor(
     }
 
     fun getPortfolioItemById(id: Int): Result<PortfolioItem> {
-        try {
-            val requiredPortfolioItem =
-                portfolioItemRepository.getPortfolioItemById(id)
-                    ?: throw Exception("Null Portfolio Item")
-            return Result.success(requiredPortfolioItem)
-        } catch (exception: Exception) {
-            return Result.failure(exception)
+        return resultOf {
+            portfolioItemRepository.getPortfolioItemById(id)
+                ?: throw Exception("Null Portfolio Item")
         }
     }
 
