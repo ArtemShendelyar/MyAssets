@@ -9,4 +9,7 @@
     <string name="hello_blank_portfolio_fragment">HELLO PORTFOLIO!!!</string>
     <string name="hello_blank_assets_fragment">WELCOME ASSETS!</string>
     <string name="hello_blank_settings_fragment">SETTINGS!!!</string>
+    <string name="currency">Валюта</string>
+    <string name="settings_name">Настройки</string>
+    <string name="settings_language">Язык</string>
 </resources>
