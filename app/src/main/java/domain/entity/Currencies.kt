@@ -6,5 +6,6 @@ enum class Currencies(
     BYN("BYN"),
     USD("USD"),
     RUB("RUB"),
+    EUR("EUR"),
     CNY("CNY")
 }
