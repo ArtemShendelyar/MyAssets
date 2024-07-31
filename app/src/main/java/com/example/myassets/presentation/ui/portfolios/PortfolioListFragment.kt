@@ -7,13 +7,21 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.myassets.databinding.FragmentPortfolioListBinding
 import com.example.myassets.presentation.ui.portfolios.rv.PortfolioListRvAdapter
-import com.example.myassets.presentation.ui.portfolios.rv.listeners.PortfolioListItemListenerImpl
+import com.example.myassets.presentation.ui.portfolios.rv.listeners.PortfolioListItemListener
 import com.example.myassets.presentation.util.BasicFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class PortfolioListFragment : BasicFragment<FragmentPortfolioListBinding>() {
     private val viewModel: PortfolioListViewModel by viewModels()
+    private val itemListener = object : PortfolioListItemListener {
+        override fun onItemClick(itemId: Int) {
+            TODO("Реализация перехода на детальный экран")
+        }
+        override fun onSelect(itemId: Int) {
+            TODO("Реализация переключения портфеля")
+        }
+    }
 
     override fun inflateViewBinding(
         inflater: LayoutInflater,
@@ -22,7 +30,7 @@ class PortfolioListFragment : BasicFragment<FragmentPortfolioListBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = PortfolioListRvAdapter(viewModel.portfolioList.value!!)
+        val adapter = PortfolioListRvAdapter(itemListener)
         binding.portfolioListRv.adapter = adapter
 
         viewModel.portfolioList.observe(viewLifecycleOwner) { portfolioList ->

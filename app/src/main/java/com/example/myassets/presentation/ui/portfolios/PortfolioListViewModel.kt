@@ -18,8 +18,4 @@ class PortfolioListViewModel @Inject constructor(
     init {
         _portfolioList.value = portfolioInteractor.getPortfolioList()
     }
-
-    fun openPortfolioDetailsFragment(portfolioId: Int) {
-        TODO("Реализовать переход на фрагмент деталей о портфеле")
-    }
 }
