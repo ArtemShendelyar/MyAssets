@@ -9,4 +9,6 @@
     <string name="hello_blank_portfolio_fragment">HELLO PORTFOLIO!!!</string>
     <string name="hello_blank_assets_fragment">WELCOME ASSETS!</string>
     <string name="hello_blank_settings_fragment">SETTINGS!!!</string>
+    <string name="portfolio_select">Select</string>
+    <string name="portfolio_list_label">My portfolios</string>
 </resources>
