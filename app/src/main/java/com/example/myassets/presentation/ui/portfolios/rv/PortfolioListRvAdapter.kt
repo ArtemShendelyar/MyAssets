@@ -8,7 +8,7 @@ import com.example.myassets.presentation.ui.portfolios.rv.listeners.PortfolioLis
 import domain.entity.Portfolio
 
 class PortfolioListRvAdapter(
-    private var itemListener: PortfolioListItemListener
+    private val itemListener: PortfolioListItemListener
 ) : ListAdapter<Portfolio, PortfolioListRvViewHolder>(PortfolioListRvDiffUtilCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PortfolioListRvViewHolder {
         return PortfolioListRvViewHolder(

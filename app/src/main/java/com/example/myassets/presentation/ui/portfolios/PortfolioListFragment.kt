@@ -14,14 +14,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class PortfolioListFragment : BasicFragment<FragmentPortfolioListBinding>() {
     private val viewModel: PortfolioListViewModel by viewModels()
-    private val itemListener = object : PortfolioListItemListener {
-        override fun onItemClick(itemId: Int) {
-            TODO("Реализация перехода на детальный экран")
-        }
-        override fun onSelect(itemId: Int) {
-            TODO("Реализация переключения портфеля")
-        }
-    }
 
     override fun inflateViewBinding(
         inflater: LayoutInflater,
@@ -30,7 +22,16 @@ class PortfolioListFragment : BasicFragment<FragmentPortfolioListBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = PortfolioListRvAdapter(itemListener)
+        val adapter = PortfolioListRvAdapter(itemListener = object : PortfolioListItemListener {
+            override fun onItemClick(itemId: Int) {
+                TODO("Реализация перехода на детальный экран")
+            }
+
+            override fun onSelect(itemId: Int) {
+                TODO("Реализация переключения портфеля")
+            }
+        }
+        )
         binding.portfolioListRv.adapter = adapter
 
         viewModel.portfolioList.observe(viewLifecycleOwner) { portfolioList ->
