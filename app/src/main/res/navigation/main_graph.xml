@@ -16,9 +16,9 @@
         tools:layout="@layout/fragment_asset_list" />
     <fragment
         android:id="@+id/portfolio_list_fragment"
-        android:name="com.example.myassets.presentation.ui.portfolios.ProtfolioListFragment"
+        android:name="com.example.myassets.presentation.ui.portfolios.PortfolioListFragment"
         android:label="portfolio"
-        tools:layout="@layout/fragment_protfolio_list" />
+        tools:layout="@layout/fragment_portfolio_list" />
     <fragment
         android:id="@+id/fragment_settings"
         android:name="com.example.myassets.presentation.ui.settings.SettingsFragment"

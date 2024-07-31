@@ -12,4 +12,6 @@
     <string name="currency">Валюта</string>
     <string name="settings_name">Настройки</string>
     <string name="settings_language">Язык</string>
+    <string name="portfolio_select">Select</string>
+    <string name="portfolio_list_label">My portfolios</string>
 </resources>

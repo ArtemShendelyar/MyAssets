@@ -7,6 +7,14 @@ object ExamplePortfolioList {
         Portfolio(
             id = 1,
             name = "My first portfolio"
+        ),
+        Portfolio(
+            id = 2,
+            name = "My second portfolio"
+        ),
+        Portfolio(
+            id = 3,
+            name = "My third portfolio"
         )
     )
 
