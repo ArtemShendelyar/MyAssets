@@ -12,7 +12,7 @@ import com.example.myassets.presentation.ui.settings.SettingsViewModel
 import com.example.myassets.presentation.util.BasicBottomSheetFragment
 import domain.entity.Locales
 
-class LanguageBottomSheetFragment: BasicBottomSheetFragment<FragmentBottomSheetListBinding>(){
+class LanguageBottomSheetFragment : BasicBottomSheetFragment<FragmentBottomSheetListBinding>() {
 
     private val settingsViewModel: SettingsViewModel by viewModels({ requireParentFragment() })
 
@@ -34,6 +34,7 @@ class LanguageBottomSheetFragment: BasicBottomSheetFragment<FragmentBottomSheetL
             dialog?.dismiss()
         }
     }
+
     companion object {
         const val TAG = "SelectLanguageDialog"
     }

@@ -16,7 +16,9 @@ abstract class BasicBottomSheetFragment<VB : ViewBinding> : BottomSheetDialogFra
 
     protected abstract fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): VB
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         _binding = inflateViewBinding(inflater, container)
         return binding.root

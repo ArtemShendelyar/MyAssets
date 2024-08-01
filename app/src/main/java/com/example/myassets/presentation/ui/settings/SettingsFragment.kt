@@ -18,16 +18,17 @@ class SettingsFragment : BasicFragment<FragmentSettingsBinding>() {
         inflater: LayoutInflater,
         container: ViewGroup?
     ) = FragmentSettingsBinding.inflate(inflater, container, false)
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         settingsViewModel.defaultCurrency.observe(viewLifecycleOwner) {
             binding.currencyValue.text = it
         }
-        settingsViewModel.defaultLanguage.observe(viewLifecycleOwner){
+        settingsViewModel.defaultLanguage.observe(viewLifecycleOwner) {
             binding.languageValue.text = it
         }
 
-        binding.settingsLanguage.setOnClickListener{
+        binding.settingsLanguage.setOnClickListener {
             LanguageBottomSheetFragment().show(
                 childFragmentManager, LanguageBottomSheetFragment.TAG
             )

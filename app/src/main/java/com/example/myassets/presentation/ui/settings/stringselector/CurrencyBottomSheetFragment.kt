@@ -12,7 +12,7 @@ import com.example.myassets.presentation.ui.settings.SettingsViewModel
 import com.example.myassets.presentation.util.BasicBottomSheetFragment
 import domain.entity.Currencies
 
-class CurrencyBottomSheetFragment: BasicBottomSheetFragment<FragmentBottomSheetListBinding>(){
+class CurrencyBottomSheetFragment : BasicBottomSheetFragment<FragmentBottomSheetListBinding>() {
 
     private val settingsViewModel: SettingsViewModel by viewModels({ requireParentFragment() })
 
@@ -34,6 +34,7 @@ class CurrencyBottomSheetFragment: BasicBottomSheetFragment<FragmentBottomSheetL
             dialog?.dismiss()
         }
     }
+
     companion object {
         const val TAG = "SelectCurrencyDialog"
     }

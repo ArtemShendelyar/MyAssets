@@ -6,13 +6,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import domain.interactors.SettingsInteractor
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
     private val settingsInteractor: SettingsInteractor
-): ViewModel() {
+) : ViewModel() {
     private val _currentCurrency = MutableLiveData<String>()
     private val _currentLanguage = MutableLiveData<String>()
     val defaultCurrency: LiveData<String>
@@ -41,12 +41,13 @@ class SettingsViewModel @Inject constructor(
 
     private fun fetchGlobalCurrency() {
         viewModelScope.launch {
-            _currentCurrency.value = settingsInteractor.getGlobalCurrency()?:"BYN"
+            _currentCurrency.value = settingsInteractor.getGlobalCurrency() ?: "BYN"
         }
     }
+
     private fun fetchAppLanguage() {
         viewModelScope.launch {
-            _currentLanguage.value = settingsInteractor.getAppLanguage()?:"Russian"
+            _currentLanguage.value = settingsInteractor.getAppLanguage() ?: "Russian"
         }
     }
 }
