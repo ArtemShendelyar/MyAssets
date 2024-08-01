@@ -15,9 +15,9 @@ class SettingsViewModel @Inject constructor(
 ) : ViewModel() {
     private val _currentCurrency = MutableLiveData<String>()
     private val _currentLanguage = MutableLiveData<String>()
-    val defaultCurrency: LiveData<String>
+    val currentCurrency: LiveData<String>
         get() = _currentCurrency
-    val defaultLanguage: LiveData<String>
+    val currentLanguage: LiveData<String>
         get() = _currentLanguage
 
     init {

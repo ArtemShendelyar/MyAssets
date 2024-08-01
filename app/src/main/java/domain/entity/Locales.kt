@@ -1,8 +1,8 @@
 package domain.entity
 
-enum class Locales(
-    val localeName: String
-) {
-    RUS("Русский"),
-    ENG("English"),
+object Locales {
+    val names: HashMap<String, String> = hashMapOf(
+        "Русский" to "ru",
+        "English" to "en"
+    )
 }

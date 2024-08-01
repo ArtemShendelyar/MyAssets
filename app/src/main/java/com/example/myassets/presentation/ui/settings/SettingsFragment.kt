@@ -21,10 +21,12 @@ class SettingsFragment : BasicFragment<FragmentSettingsBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        settingsViewModel.defaultCurrency.observe(viewLifecycleOwner) {
+
+        settingsViewModel.currentCurrency.observe(viewLifecycleOwner) {
             binding.currencyValue.text = it
         }
-        settingsViewModel.defaultLanguage.observe(viewLifecycleOwner) {
+
+        settingsViewModel.currentLanguage.observe(viewLifecycleOwner) {
             binding.languageValue.text = it
         }
 

@@ -16,7 +16,7 @@ class LanguageBottomSheetFragment : BasicBottomSheetFragment<FragmentBottomSheet
 
     private val settingsViewModel: SettingsViewModel by viewModels({ requireParentFragment() })
 
-    private var optionsList = Locales.entries.toTypedArray()
+    private var optionsList = Locales.names.keys.toList()
     override fun inflateViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -24,13 +24,12 @@ class LanguageBottomSheetFragment : BasicBottomSheetFragment<FragmentBottomSheet
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val adapter = ArrayAdapter(
             requireContext(), R.layout.item_bottom_sheet_list, optionsList
         )
         binding.bottomSheetList.adapter = adapter
         binding.bottomSheetList.setOnItemClickListener { _, _, position, _ ->
-            settingsViewModel.saveAppLanguage(optionsList[position].localeName)
+            settingsViewModel.saveAppLanguage(optionsList[position])
             dialog?.dismiss()
         }
     }
