@@ -10,13 +10,13 @@ import com.example.myassets.R
 import com.example.myassets.databinding.FragmentBottomSheetListBinding
 import com.example.myassets.presentation.ui.settings.SettingsViewModel
 import com.example.myassets.presentation.util.BasicBottomSheetFragment
-import domain.entity.Currencies
+import domain.entity.Locales
 
-class CurrencyBottomSheetFragment: BasicBottomSheetFragment<FragmentBottomSheetListBinding>(){
+class LanguageBottomSheetFragment: BasicBottomSheetFragment<FragmentBottomSheetListBinding>(){
 
     private val settingsViewModel: SettingsViewModel by viewModels({ requireParentFragment() })
 
-    private var optionsList = Currencies.entries.toTypedArray()
+    private var optionsList = Locales.entries.toTypedArray()
     override fun inflateViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -30,11 +30,11 @@ class CurrencyBottomSheetFragment: BasicBottomSheetFragment<FragmentBottomSheetL
         )
         binding.bottomSheetList.adapter = adapter
         binding.bottomSheetList.setOnItemClickListener { _, _, position, _ ->
-            settingsViewModel.saveGlobalCurrency(optionsList[position].currencyName)
+            settingsViewModel.saveAppLanguage(optionsList[position].localeName)
             dialog?.dismiss()
         }
     }
     companion object {
-        const val TAG = "SelectCurrencyDialog"
+        const val TAG = "SelectLanguageDialog"
     }
 }

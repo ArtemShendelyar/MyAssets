@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.myassets.databinding.FragmentSettingsBinding
 import com.example.myassets.presentation.ui.settings.stringselector.CurrencyBottomSheetFragment
+import com.example.myassets.presentation.ui.settings.stringselector.LanguageBottomSheetFragment
 import com.example.myassets.presentation.util.BasicFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,6 +22,15 @@ class SettingsFragment : BasicFragment<FragmentSettingsBinding>() {
         super.onViewCreated(view, savedInstanceState)
         settingsViewModel.defaultCurrency.observe(viewLifecycleOwner) {
             binding.currencyValue.text = it
+        }
+        settingsViewModel.defaultLanguage.observe(viewLifecycleOwner){
+            binding.languageValue.text = it
+        }
+
+        binding.settingsLanguage.setOnClickListener{
+            LanguageBottomSheetFragment().show(
+                childFragmentManager, LanguageBottomSheetFragment.TAG
+            )
         }
 
         binding.settingsCurrency.setOnClickListener {
