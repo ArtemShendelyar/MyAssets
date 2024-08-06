@@ -4,27 +4,31 @@ import data.datasource.interfaces.PortfolioDataSource
 import domain.entity.Portfolio
 import domain.repository.PortfolioRepository
 import javax.inject.Inject
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class PortfolioRepositoryImpl @Inject constructor(
     private val dataSource: PortfolioDataSource
 ) : PortfolioRepository {
-    override fun getPortfolios(): List<Portfolio> {
-        return dataSource.getPortfolios()
+    override suspend fun getPortfolios(): List<Portfolio> {
+        return withContext(Dispatchers.IO) {
+            dataSource.getPortfolios()
+        }
     }
 
-    override fun getPortfolioById(id: Int): Portfolio? {
+    override suspend fun getPortfolioById(id: Int): Portfolio? {
         TODO("Not yet implemented")
     }
 
-    override fun createPortfolio(portfolio: Portfolio) {
+    override suspend fun createPortfolio(portfolio: Portfolio) {
         TODO("Not yet implemented")
     }
 
-    override fun deletePortfolio(id: Int) {
+    override suspend fun deletePortfolio(id: Int) {
         TODO("Not yet implemented")
     }
 
-    override fun updatePortfolio(id: Int, portfolio: Portfolio) {
+    override suspend fun updatePortfolio(id: Int, portfolio: Portfolio) {
         TODO("Not yet implemented")
     }
 }

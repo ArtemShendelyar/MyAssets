@@ -10,25 +10,25 @@ import javax.inject.Singleton
 class PortfolioInteractor @Inject constructor(
     private val portfolioRepository: PortfolioRepository
 ) {
-    fun getPortfolioList(): List<Portfolio> {
+    suspend fun getPortfolioList(): List<Portfolio> {
         return portfolioRepository.getPortfolios()
     }
 
-    fun getPortfolioById(id: Int): Result<Portfolio> {
+    suspend fun getPortfolioById(id: Int): Result<Portfolio> {
         return resultOf {
             portfolioRepository.getPortfolioById(id) ?: throw Exception("Null Portfolio Item")
         }
     }
 
-    fun createPortfolio(portfolio: Portfolio) {
+    suspend fun createPortfolio(portfolio: Portfolio) {
         portfolioRepository.createPortfolio(portfolio)
     }
 
-    fun updatePortfolio(id: Int, portfolio: Portfolio) {
+    suspend fun updatePortfolio(id: Int, portfolio: Portfolio) {
         portfolioRepository.updatePortfolio(id, portfolio)
     }
 
-    fun deletePortfolio(id: Int) {
+    suspend fun deletePortfolio(id: Int) {
         portfolioRepository.deletePortfolio(id)
     }
 }
