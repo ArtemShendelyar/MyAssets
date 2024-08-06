@@ -14,19 +14,27 @@ class LocalPortfolioItemDataSource @Inject constructor() : PortfolioItemDataSour
         }
     }
 
-    override suspend fun getPortfolioItemById(id: Int): PortfolioItem? {
-        TODO("Not yet implemented")
+    override suspend fun getPortfolioItemById(id: Int): PortfolioItem {
+        return withContext(Dispatchers.IO) {
+            ExamplePortfolioItemList.getPortfolioItemById(id)
+        }
     }
 
     override suspend fun createPortfolioItem(portfolioItem: PortfolioItem) {
-        TODO("Not yet implemented")
+        return withContext(Dispatchers.IO) {
+            createPortfolioItem(portfolioItem)
+        }
     }
 
     override suspend fun updatePortfolioItem(id: Int, portfolioItem: PortfolioItem) {
-        TODO("Not yet implemented")
+        return withContext(Dispatchers.IO) {
+            updatePortfolioItem(id, portfolioItem)
+        }
     }
 
     override suspend fun deletePortfolioItem(id: Int) {
-        TODO("Not yet implemented")
+        return withContext(Dispatchers.IO) {
+            deletePortfolioItem(id)
+        }
     }
 }

@@ -22,4 +22,10 @@ class PortfolioListViewModel @Inject constructor(
             _portfolioList.value = portfolioInteractor.getPortfolioList()
         }
     }
+
+    fun createPortfolio() {
+        viewModelScope.launch {
+            portfolioInteractor.createPortfolio()
+        }
+    }
 }

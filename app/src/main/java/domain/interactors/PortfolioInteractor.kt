@@ -20,8 +20,8 @@ class PortfolioInteractor @Inject constructor(
         }
     }
 
-    suspend fun createPortfolio(portfolio: Portfolio) {
-        portfolioRepository.createPortfolio(portfolio)
+    suspend fun createPortfolio() {
+        portfolioRepository.createPortfolio()
     }
 
     suspend fun updatePortfolio(id: Int, portfolio: Portfolio) {
