@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 class PortfolioListViewModel @Inject constructor(
     private val portfolioInteractor: PortfolioInteractor
 ) : ViewModel() {
-    val _portfolioList = MutableLiveData<List<Portfolio>>()
+    private val _portfolioList = MutableLiveData<List<Portfolio>>()
     val portfolioList: LiveData<List<Portfolio>> get() = _portfolioList
 
     init {
