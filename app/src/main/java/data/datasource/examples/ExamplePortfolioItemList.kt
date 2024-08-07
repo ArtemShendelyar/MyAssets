@@ -7,7 +7,7 @@ import domain.entity.Stock
 import java.time.LocalDate
 
 object ExamplePortfolioItemList {
-    private val portfolioItemList = listOf(
+    private val portfolioItemList = mutableListOf(
         PortfolioItem(
             id = 1,
             name = "My dollars",
@@ -52,4 +52,18 @@ object ExamplePortfolioItemList {
     )
 
     fun getPortfolioItemList() = portfolioItemList
+
+    fun getPortfolioItemById(id: Int) = portfolioItemList.elementAt(id)
+
+    fun createPortfolioItem(portfolioItem: PortfolioItem) {
+        portfolioItemList.add(portfolioItem)
+    }
+
+    fun updatePortfolioItem(id: Int, portfolioItem: PortfolioItem) {
+        portfolioItemList[id] = portfolioItem
+    }
+
+    fun deletePortfolioItem(id: Int) {
+        portfolioItemList.removeAt(id)
+    }
 }

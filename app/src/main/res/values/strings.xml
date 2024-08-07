@@ -11,4 +11,5 @@
     <string name="hello_blank_settings_fragment">SETTINGS!!!</string>
     <string name="portfolio_select">Select</string>
     <string name="portfolio_list_label">My portfolios</string>
+    <string name="new_portfolio_button">Create new portfolio</string>
 </resources>

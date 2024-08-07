@@ -37,5 +37,9 @@ class PortfolioListFragment : BasicFragment<FragmentPortfolioListBinding>() {
         viewModel.portfolioList.observe(viewLifecycleOwner) { portfolioList ->
             adapter.submitList(portfolioList)
         }
+
+        binding.createPortfolioButton.setOnClickListener {
+            viewModel.createPortfolio()
+        }
     }
 }
