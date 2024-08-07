@@ -44,7 +44,7 @@ class SettingsViewModel @Inject constructor(
             flowOf(languageStringUI).collect {
                 _currentLanguage.value = it
             }
-            settingsInteractor.setAppLanguage(language)
+            settingsInteractor.setAppLanguage(languageStringUI)
             val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags(language)
             AppCompatDelegate.setApplicationLocales(appLocale)
         }
