@@ -30,8 +30,8 @@ abstract class BasicBottomSheetFragment<VB : ViewBinding> : BottomSheetDialogFra
         }
     }
 
-    override fun onDestroy() {
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
-        super.onDestroy()
     }
 }

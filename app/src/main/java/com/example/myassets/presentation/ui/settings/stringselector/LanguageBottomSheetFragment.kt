@@ -10,13 +10,11 @@ import com.example.myassets.R
 import com.example.myassets.databinding.FragmentBottomSheetListBinding
 import com.example.myassets.presentation.ui.settings.SettingsViewModel
 import com.example.myassets.presentation.util.BasicBottomSheetFragment
-import domain.entity.Locales
 
 class LanguageBottomSheetFragment : BasicBottomSheetFragment<FragmentBottomSheetListBinding>() {
 
     private val settingsViewModel: SettingsViewModel by viewModels({ requireParentFragment() })
 
-    private var optionsList = Locales.names.keys.toList()
     override fun inflateViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -24,12 +22,15 @@ class LanguageBottomSheetFragment : BasicBottomSheetFragment<FragmentBottomSheet
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Костыль.
+        val optionsListUI = getString(R.string.locales_for_UI).split(",")
+        val optionsList = getString(R.string.locales).split(",")
         val adapter = ArrayAdapter(
-            requireContext(), R.layout.item_bottom_sheet_list, optionsList
+            requireContext(), R.layout.item_bottom_sheet_list, optionsListUI
         )
         binding.bottomSheetList.adapter = adapter
         binding.bottomSheetList.setOnItemClickListener { _, _, position, _ ->
-            settingsViewModel.saveAppLanguage(optionsList[position])
+            settingsViewModel.saveAppLanguage(optionsList[position], optionsListUI[position])
             dialog?.dismiss()
         }
     }
