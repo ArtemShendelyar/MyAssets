@@ -40,7 +40,6 @@ class PortfolioListFragment : BasicFragment<FragmentPortfolioListBinding>() {
 
         binding.createPortfolioButton.setOnClickListener {
             viewModel.createPortfolio()
-            adapter.notifyDataSetChanged()
         }
     }
 }

@@ -14,10 +14,14 @@ import kotlinx.coroutines.launch
 class PortfolioListViewModel @Inject constructor(
     private val portfolioInteractor: PortfolioInteractor
 ) : ViewModel() {
-    private val _portfolioList = MutableLiveData<List<Portfolio>>()
+    val _portfolioList = MutableLiveData<List<Portfolio>>()
     val portfolioList: LiveData<List<Portfolio>> get() = _portfolioList
 
     init {
+        fetchPortfolioList()
+    }
+
+    private fun fetchPortfolioList() {
         viewModelScope.launch {
             _portfolioList.value = portfolioInteractor.getPortfolioList()
         }
@@ -27,5 +31,6 @@ class PortfolioListViewModel @Inject constructor(
         viewModelScope.launch {
             portfolioInteractor.createPortfolio()
         }
+        fetchPortfolioList()
     }
 }

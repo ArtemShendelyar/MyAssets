@@ -21,6 +21,12 @@ class PortfolioListRvAdapter(
         )
     }
 
+    // Переопределяю метод, потому что ListAdapter не вызывает DiffUtil при работе со списками:
+    // https://stackoverflow.com/a/50062174
+    override fun submitList(list: List<Portfolio>?) {
+        super.submitList(list?.let { ArrayList(it) })
+    }
+
     override fun onBindViewHolder(holder: PortfolioListRvViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
