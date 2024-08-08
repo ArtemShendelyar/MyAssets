@@ -1,7 +1,5 @@
 package com.example.myassets.presentation.ui.settings
 
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,13 +18,8 @@ class SettingsViewModel @Inject constructor(
     val currentCurrency: LiveData<String>
         get() = _currentCurrency
 
-    private val _currentLanguage = MutableLiveData<String>()
-    val currentLanguage: LiveData<String>
-        get() = _currentLanguage
-
     init {
         fetchGlobalCurrency()
-        fetchAppLanguage()
     }
 
     fun saveGlobalCurrency(currency: String) {
@@ -38,27 +31,9 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
-    fun saveAppLanguage(language: String, languageStringUI: String) {
-        _currentLanguage.value = languageStringUI
-        viewModelScope.launch {
-            flowOf(languageStringUI).collect {
-                _currentLanguage.value = it
-            }
-            settingsInteractor.setAppLanguage(languageStringUI)
-            val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags(language)
-            AppCompatDelegate.setApplicationLocales(appLocale)
-        }
-    }
-
     private fun fetchGlobalCurrency() {
         viewModelScope.launch {
             _currentCurrency.value = settingsInteractor.getGlobalCurrency()
-        }
-    }
-
-    private fun fetchAppLanguage() {
-        viewModelScope.launch {
-            _currentLanguage.value = settingsInteractor.getAppLanguage()
         }
     }
 }

@@ -4,15 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.myassets.databinding.FragmentSettingsBinding
-import com.example.myassets.presentation.ui.settings.stringselector.CurrencyBottomSheetFragment
-import com.example.myassets.presentation.ui.settings.stringselector.LanguageBottomSheetFragment
 import com.example.myassets.presentation.util.BasicFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SettingsFragment : BasicFragment<FragmentSettingsBinding>() {
+    companion object {
+        private const val KEY_CURRENCY = "currencyKey"
+        private const val KEY_CURRENCY_NAME = "currencyName"
+    }
+
     private val settingsViewModel: SettingsViewModel by viewModels()
     override fun inflateViewBinding(
         inflater: LayoutInflater,
@@ -26,20 +31,16 @@ class SettingsFragment : BasicFragment<FragmentSettingsBinding>() {
             binding.currencyValue.text = it
         }
 
-        settingsViewModel.currentLanguage.observe(viewLifecycleOwner) {
-            binding.languageValue.text = it
-        }
-
-        binding.settingsLanguage.setOnClickListener {
-            LanguageBottomSheetFragment().show(
-                childFragmentManager, LanguageBottomSheetFragment.TAG
-            )
+        setFragmentResultListener(KEY_CURRENCY) { _, bundle ->
+            val result = bundle.getString(KEY_CURRENCY_NAME)
+            if (result != null) {
+                settingsViewModel.saveGlobalCurrency(result)
+            }
         }
 
         binding.settingsCurrency.setOnClickListener {
-            CurrencyBottomSheetFragment().show(
-                childFragmentManager, CurrencyBottomSheetFragment.TAG
-            )
+            val action = SettingsFragmentDirections.letsCreateDialogForSelectingCurrency()
+            findNavController().navigate(action)
         }
     }
 }

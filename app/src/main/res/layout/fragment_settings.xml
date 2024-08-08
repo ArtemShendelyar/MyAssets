@@ -37,29 +37,4 @@
             android:textSize="20sp"
             tools:text="USD" />
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/settings_language"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/settings_language"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/language_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            tools:text="Русский" />
-    </LinearLayout>
-
 </LinearLayout>

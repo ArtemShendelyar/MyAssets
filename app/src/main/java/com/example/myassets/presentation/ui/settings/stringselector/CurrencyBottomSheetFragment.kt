@@ -4,38 +4,42 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import androidx.fragment.app.viewModels
-import com.example.myassets.R
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 import com.example.myassets.databinding.FragmentBottomSheetListBinding
-import com.example.myassets.presentation.ui.settings.SettingsViewModel
-import com.example.myassets.presentation.util.BasicBottomSheetFragment
-import domain.entity.Currencies
+import com.example.myassets.presentation.ui.settings.stringselector.rv.BottomSheetAdapter
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class CurrencyBottomSheetFragment : BasicBottomSheetFragment<FragmentBottomSheetListBinding>() {
+class CurrencyBottomSheetFragment : BottomSheetDialogFragment() {
+    companion object {
+        private const val KEY_CURRENCY = "currencyKey"
+        private const val KEY_CURRENCY_NAME = "currencyName"
+    }
+    private var _binding: FragmentBottomSheetListBinding? = null
+    private val binding get() = _binding!!
 
-    private val settingsViewModel: SettingsViewModel by viewModels({ requireParentFragment() })
-
-    private var optionsList = Currencies.entries.toTypedArray()
-    override fun inflateViewBinding(
+    override fun onCreateView(
         inflater: LayoutInflater,
-        container: ViewGroup?
-    ) = FragmentBottomSheetListBinding.inflate(inflater, container, false)
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentBottomSheetListBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val adapter = BottomSheetAdapter()
 
-        val adapter = ArrayAdapter(
-            requireContext(), R.layout.item_bottom_sheet_list, optionsList
-        )
-        binding.bottomSheetList.adapter = adapter
-        binding.bottomSheetList.setOnItemClickListener { _, _, position, _ ->
-            settingsViewModel.saveGlobalCurrency(optionsList[position].currencyName)
-            dialog?.dismiss()
+        adapter.onClick = { currency ->
+            setFragmentResult(KEY_CURRENCY, bundleOf(KEY_CURRENCY_NAME to currency.currencyName))
+            dismiss()
         }
+        binding.recyclerBottomSheet.adapter = adapter
     }
 
-    companion object {
-        const val TAG = "SelectCurrencyDialog"
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
