@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import domain.interactors.SettingsInteractor
 import javax.inject.Inject
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 
 @HiltViewModel
@@ -24,9 +23,7 @@ class SettingsViewModel @Inject constructor(
 
     fun saveGlobalCurrency(currency: String) {
         viewModelScope.launch {
-            flowOf(currency).collect {
-                _currentCurrency.value = it
-            }
+            _currentCurrency.value = currency
             settingsInteractor.setGlobalCurrency(currency)
         }
     }

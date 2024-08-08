@@ -11,30 +11,27 @@ import kotlinx.coroutines.flow.first
 class DataStoreRepositoryImpl @Inject constructor(
     private val dataStore: DataStore<Preferences>
 ) : DataStoreRepository {
-    override suspend fun putString(key: String, value: String) {
-        val prefKey = stringPreferencesKey(key)
-        dataStore.edit {
-            it[prefKey] = value
-        }
+
+    companion object {
+        private const val DEFAULT_CURRENCY_KEY = "CURRENCY_KEY"
+        private const val DEFAULT_CURRENCY = "BYN"
     }
 
-    override suspend fun getString(key: String): String? {
+    override suspend fun getDefaultCurrency(): String? {
         return try {
-            val prefKey = stringPreferencesKey(key)
+            val prefKey = stringPreferencesKey(DEFAULT_CURRENCY_KEY)
             val preference = dataStore.data.first()
-            preference[prefKey]
+            preference[prefKey] ?: DEFAULT_CURRENCY
         } catch (e: Exception) {
             e.printStackTrace()
             null
         }
     }
 
-    override suspend fun clearPreference(key: String) {
-        val prefKey = stringPreferencesKey(key)
+    override suspend fun setDefaultCurrency(value: String) {
+        val prefKey = stringPreferencesKey(DEFAULT_CURRENCY_KEY)
         dataStore.edit {
-            if (it.contains(prefKey)) {
-                it.remove(prefKey)
-            }
+            it[prefKey] = value
         }
     }
 }
