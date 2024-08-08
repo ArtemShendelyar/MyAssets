@@ -13,5 +13,4 @@ class SettingsInteractor @Inject constructor(
     suspend fun getGlobalCurrency(): String? {
         return dataStoreRepository.getDefaultCurrency()
     }
-
 }
