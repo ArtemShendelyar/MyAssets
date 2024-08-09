@@ -8,15 +8,13 @@ import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.myassets.databinding.FragmentSettingsBinding
+import com.example.myassets.presentation.ui.settings.stringselector.CurrencyBottomSheetFragment.Companion.KEY_CURRENCY
+import com.example.myassets.presentation.ui.settings.stringselector.CurrencyBottomSheetFragment.Companion.KEY_CURRENCY_NAME
 import com.example.myassets.presentation.util.BasicFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SettingsFragment : BasicFragment<FragmentSettingsBinding>() {
-    companion object {
-        private const val KEY_CURRENCY = "currencyKey"
-        private const val KEY_CURRENCY_NAME = "currencyName"
-    }
 
     private val settingsViewModel: SettingsViewModel by viewModels()
     override fun inflateViewBinding(

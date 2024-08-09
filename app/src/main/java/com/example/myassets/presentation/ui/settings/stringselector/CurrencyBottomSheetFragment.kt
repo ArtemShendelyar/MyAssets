@@ -12,8 +12,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class CurrencyBottomSheetFragment : BottomSheetDialogFragment() {
     companion object {
-        private const val KEY_CURRENCY = "currencyKey"
-        private const val KEY_CURRENCY_NAME = "currencyName"
+        const val KEY_CURRENCY = "currencyKey"
+        const val KEY_CURRENCY_NAME = "currencyName"
     }
     private var _binding: FragmentBottomSheetListBinding? = null
     private val binding get() = _binding!!
