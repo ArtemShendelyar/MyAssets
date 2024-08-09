@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">МоиБумажки</string>
+    <string name="hello_blank_fragment">Привет пустой фрагмент</string>
+    <string name="nav_bar_settings">Настройки</string>
+    <string name="nav_bar_assets">Бумажки</string>
+    <string name="nav_bar_portfolios">Портфели</string>
+    <string name="nav_bar_home">Дом</string>
+    <string name="hello_blank_home_fragment">Дом фрагмент!!!</string>
+    <string name="hello_blank_portfolio_fragment">ПРИВЕТ ПОРТФЕЛЬ!!!</string>
+    <string name="hello_blank_assets_fragment">ДОБРО ПОЖАЛОВАТЬ БУМАЖКИ!</string>
+    <string name="hello_blank_settings_fragment">НАСТРОЕЧКИ!!!</string>
+    <string name="currency">Валюты</string>
+    <string name="settings_name">Настройки</string>
+    <string name="settings_language">Язык</string>
+    <string name="portfolio_select">Выбрать</string>
+    <string name="portfolio_list_label">Мои портфели</string>
+</resources>

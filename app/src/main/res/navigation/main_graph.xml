@@ -23,5 +23,14 @@
         android:id="@+id/fragment_settings"
         android:name="com.example.myassets.presentation.ui.settings.SettingsFragment"
         android:label="settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings">
+        <action
+        android:id="@+id/lets_create_dialog_for_selecting_currency"
+        app:destination="@id/chooseDefaultCurrencyFragment" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/chooseDefaultCurrencyFragment"
+        android:name="com.example.myassets.presentation.ui.settings.stringselector.CurrencyBottomSheetFragment"
+        android:label="ChooseDefaultCurrencyFragment" />
 </navigation>
