@@ -5,22 +5,22 @@ import domain.entity.Portfolio
 object ExamplePortfolioList {
     private val portfolioList = mutableListOf(
         Portfolio(
-            id = 1,
+            id = 0,
             name = "My first portfolio"
         ),
         Portfolio(
-            id = 2,
+            id = 1,
             name = "My second portfolio"
         ),
         Portfolio(
-            id = 3,
+            id = 2,
             name = "My third portfolio"
         )
     )
 
     fun getPortfolioList() = portfolioList
 
-    fun getPortfolioById(id: Int) = portfolioList.elementAt(id)
+    fun getPortfolioByListPosition(position: Int) = portfolioList.elementAt(position)
 
     fun createPortfolio() {
         val newPortfolio = Portfolio(

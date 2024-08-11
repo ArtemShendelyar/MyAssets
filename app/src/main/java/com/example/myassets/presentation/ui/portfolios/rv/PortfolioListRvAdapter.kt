@@ -28,6 +28,6 @@ class PortfolioListRvAdapter(
     }
 
     override fun onBindViewHolder(holder: PortfolioListRvViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), position)
     }
 }

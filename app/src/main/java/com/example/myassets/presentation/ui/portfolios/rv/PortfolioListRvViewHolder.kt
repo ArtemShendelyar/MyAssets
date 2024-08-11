@@ -9,13 +9,13 @@ class PortfolioListRvViewHolder(
     private val binding: PortfolioRvCardBinding,
     private val itemListener: PortfolioListItemListener
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(portfolio: Portfolio) {
+    fun bind(portfolio: Portfolio, position: Int) {
         binding.portfolioName.text = portfolio.name
         itemView.setOnClickListener {
-            itemListener.onItemClick(portfolio.id)
+            itemListener.onItemClick(position)
         }
         binding.portfolioSelectBtn.setOnClickListener {
-            itemListener.onSelect(portfolio.id)
+            itemListener.onSelect(position)
         }
     }
 }

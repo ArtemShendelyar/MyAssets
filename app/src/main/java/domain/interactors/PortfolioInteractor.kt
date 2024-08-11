@@ -14,9 +14,10 @@ class PortfolioInteractor @Inject constructor(
         return portfolioRepository.getPortfolios()
     }
 
-    suspend fun getPortfolioById(id: Int): Result<Portfolio> {
+    suspend fun getPortfolioByListPosition(position: Int): Result<Portfolio> {
         return resultOf {
-            portfolioRepository.getPortfolioById(id) ?: throw Exception("Null Portfolio Item")
+            portfolioRepository.getPortfolioByListPosition(position)
+                ?: throw Exception("Null Portfolio Item")
         }
     }
 

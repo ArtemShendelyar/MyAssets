@@ -16,9 +16,9 @@ class PortfolioRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getPortfolioById(id: Int): Portfolio? {
+    override suspend fun getPortfolioByListPosition(position: Int): Portfolio? {
         return withContext(Dispatchers.IO) {
-            dataSource.getPortfolioById(id)
+            dataSource.getPortfolioByListPosition(position)
         }
     }
 

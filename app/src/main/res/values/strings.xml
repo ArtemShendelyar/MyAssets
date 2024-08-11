@@ -12,4 +12,12 @@
     <string name="portfolio_select">Select</string>
     <string name="portfolio_list_label">My portfolios</string>
     <string name="new_portfolio_button">Create new portfolio</string>
+    <string name="rename">Rename</string>
+    <string name="portfolio_delete">Delete portfolio</string>
+    <string name="back">Back</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="cancel">Cancel</string>
+    <string name="portfolio_delete_confirmation">Delete this portfolio? This action cannot be undone!</string>
+    <string name="portfolio_delete_confirmation_yes">Yes, delete it</string>
 </resources>
