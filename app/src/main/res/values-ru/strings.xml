@@ -15,4 +15,7 @@
     <string name="settings_language">Язык</string>
     <string name="portfolio_select">Выбрать</string>
     <string name="portfolio_list_label">Мои портфели</string>
+    <string name="new_portfolio_button">Создать новый портфель</string>
+    <string name="label_of_assets">Оглавление ассетов</string>
+    <string name="asset_delete">Удалить</string>
 </resources>

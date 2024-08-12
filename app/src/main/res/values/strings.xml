@@ -1,8 +1,4 @@
 <resources>
-    <!-- Костыль. Я пока не знаю как его исправить. -->
-    <string name="locales_for_UI" translatable="false">Русский, English</string>
-    <string name="locales" translatable="false">ru, en</string>
-    <!-- Костыль. -->
     <string name="app_name">MyAssets</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="nav_bar_settings">Settings</string>
@@ -19,4 +15,5 @@
     <string name="portfolio_select">Select</string>
     <string name="portfolio_list_label">My portfolios</string>
     <string name="new_portfolio_button">Create new portfolio</string>
+    <string name="label_of_assets">Label of assets</string>
 </resources>

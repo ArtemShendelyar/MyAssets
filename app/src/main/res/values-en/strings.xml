@@ -15,4 +15,7 @@
     <string name="settings_language">Language</string>
     <string name="portfolio_select">Select</string>
     <string name="portfolio_list_label">My portfolios</string>
+    <string name="new_portfolio_button">Create new portfolio</string>
+    <string name="label_of_assets">Label of assets</string>
+    <string name="asset_delete">Delete</string>
 </resources>
