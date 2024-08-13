@@ -16,27 +16,42 @@ class PortfolioDetailsViewModel @Inject constructor(
 ) : ViewModel() {
     private val _portfolio = MutableLiveData<Portfolio>()
     val portfolio: LiveData<Portfolio> get() = _portfolio
+    private val _error = MutableLiveData<String?>()
+    val error: LiveData<String?> get() = _error
 
     fun fetchPortfolioById(id: Int) {
         viewModelScope.launch {
-            val portfolioResult = portfolioInteractor.getPortfolioByListPosition(id)
-            _portfolio.value = portfolioResult.getOrThrow()
+            try {
+                val portfolioResult = portfolioInteractor.getPortfolioById(id)
+                _portfolio.value = portfolioResult.getOrThrow()
+            } catch (e: Exception) {
+                _error.value = e.toString()
+            }
         }
     }
 
     fun renamePortfolio(portfolioId: Int, newName: String) {
         viewModelScope.launch {
-            val renamedPortfolioResult = portfolioInteractor.getPortfolioByListPosition(portfolioId)
-            var renamedPortfolio = renamedPortfolioResult.getOrThrow()
-            renamedPortfolio.name = newName
-            portfolioInteractor.updatePortfolio(portfolioId, renamedPortfolio)
+            try {
+                portfolioInteractor.renamePortfolio(portfolioId, newName)
+                fetchPortfolioById(portfolioId)
+            } catch (e: Exception) {
+                _error.value = e.toString()
+            }
         }
-        fetchPortfolioById(portfolioId)
     }
 
     fun deletePortfolio(portfolioId: Int) {
         viewModelScope.launch {
-            portfolioInteractor.deletePortfolio(portfolioId)
+            try {
+                portfolioInteractor.deletePortfolio(portfolioId)
+            } catch (e: Exception) {
+                _error.value = e.toString()
+            }
         }
+    }
+
+    fun resetError() {
+        _error.value = null
     }
 }

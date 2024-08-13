@@ -20,7 +20,10 @@ object ExamplePortfolioList {
 
     fun getPortfolioList() = portfolioList
 
-    fun getPortfolioByListPosition(position: Int) = portfolioList.elementAt(position)
+    fun getPortfolioById(id: Int): Portfolio {
+        return portfolioList.find { portfolio -> portfolio.id == id }
+            ?: throw NoSuchElementException("Portfolio with ID '$id' not found.")
+    }
 
     fun createPortfolio() {
         val newPortfolio = Portfolio(
@@ -30,11 +33,20 @@ object ExamplePortfolioList {
         portfolioList.add(newPortfolio)
     }
 
+    fun createAndInitPortfolio(portfolio: Portfolio) {
+        portfolioList.add(portfolio)
+    }
+
     fun updatePortfolio(id: Int, portfolio: Portfolio) {
         portfolioList[id] = portfolio
     }
 
     fun deletePortfolio(id: Int) {
-        portfolioList.removeAt(id)
+        try {
+            val index = portfolioList.indexOfFirst { portfolio -> portfolio.id == id }
+            portfolioList.removeAt(index)
+        } catch (e: IndexOutOfBoundsException) {
+            throw NoSuchElementException("Portfolio with ID '$id' not found.")
+        }
     }
 }

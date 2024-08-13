@@ -14,9 +14,9 @@ class PortfolioInteractor @Inject constructor(
         return portfolioRepository.getPortfolios()
     }
 
-    suspend fun getPortfolioByListPosition(position: Int): Result<Portfolio> {
+    suspend fun getPortfolioById(id: Int): Result<Portfolio> {
         return resultOf {
-            portfolioRepository.getPortfolioByListPosition(position)
+            portfolioRepository.getPortfolioById(id)
                 ?: throw Exception("Null Portfolio Item")
         }
     }
@@ -27,6 +27,13 @@ class PortfolioInteractor @Inject constructor(
 
     suspend fun updatePortfolio(id: Int, portfolio: Portfolio) {
         portfolioRepository.updatePortfolio(id, portfolio)
+    }
+
+    suspend fun renamePortfolio(id: Int, newName: String) {
+        val renamedPortfolioResult = getPortfolioById(id)
+        val renamedPortfolio = renamedPortfolioResult.getOrThrow()
+        portfolioRepository.deletePortfolio(id)
+        portfolioRepository.createAndInitPortfolio(renamedPortfolio.copy(name = newName))
     }
 
     suspend fun deletePortfolio(id: Int) {

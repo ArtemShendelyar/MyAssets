@@ -4,8 +4,8 @@ import java.time.LocalDate
 
 data class PortfolioItem(
     val id: Int,
-    var name: String,
-    var asset: Asset,
-    var priceCurrency: String,
-    var priceHistory: Map<LocalDate, Double>
+    val name: String,
+    val asset: Asset,
+    val priceCurrency: String,
+    val priceHistory: Map<LocalDate, Double>
 )

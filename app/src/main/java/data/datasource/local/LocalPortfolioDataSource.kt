@@ -14,15 +14,21 @@ class LocalPortfolioDataSource @Inject constructor() : PortfolioDataSource {
         }
     }
 
-    override suspend fun getPortfolioByListPosition(position: Int): Portfolio {
+    override suspend fun getPortfolioById(id: Int): Portfolio {
         return withContext(Dispatchers.IO) {
-            ExamplePortfolioList.getPortfolioByListPosition(position)
+            ExamplePortfolioList.getPortfolioById(id)
         }
     }
 
     override suspend fun createPortfolio() {
         return withContext(Dispatchers.IO) {
             ExamplePortfolioList.createPortfolio()
+        }
+    }
+
+    override suspend fun createAndInitPortfolio(portfolio: Portfolio) {
+        return withContext(Dispatchers.IO) {
+            ExamplePortfolioList.createAndInitPortfolio(portfolio)
         }
     }
 

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -32,11 +33,7 @@ class PortfolioDetailsFragment : BasicFragment<FragmentPortfolioDetailsBinding>(
         viewModel.fetchPortfolioById(portfolioId)
 
         viewModel.portfolio.observe(viewLifecycleOwner) { portfolio ->
-            portfolio?.let {
-                bindPortfolio(it)
-            } ?: run {
-                findNavController().navigateUp()
-            }
+            bindPortfolio(portfolio)
         }
 
         binding.backButton.setOnClickListener {
@@ -66,12 +63,27 @@ class PortfolioDetailsFragment : BasicFragment<FragmentPortfolioDetailsBinding>(
                 .setNegativeButton(resources.getString(R.string.cancel), dialogClickListener)
                 .show()
         }
+
+        viewModel.error.observe(
+            viewLifecycleOwner
+        ) { error ->
+            error?.let {
+                Toast.makeText(
+                    context,
+                    resources.getString(R.string.error) + error,
+                    Toast.LENGTH_SHORT
+                )
+                    .show()
+                viewModel.resetError()
+                findNavController().navigateUp()
+            }
+        }
     }
 
-    private fun bindPortfolio(portfolio: Portfolio) {
+    private fun bindPortfolio(portfolio: Portfolio?) {
         with(binding) {
-            label.text = portfolio.name
-            renameEditText.setText(portfolio.name)
+            label.text = portfolio?.name ?: resources.getString(R.string.loading)
+            renameEditText.setText(portfolio?.name ?: resources.getString(R.string.loading))
         }
     }
 }
