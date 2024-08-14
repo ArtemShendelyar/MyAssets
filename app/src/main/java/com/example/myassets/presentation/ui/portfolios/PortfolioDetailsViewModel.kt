@@ -21,11 +21,12 @@ class PortfolioDetailsViewModel @Inject constructor(
 
     fun fetchPortfolioById(id: Int) {
         viewModelScope.launch {
-            try {
-                val portfolioResult = portfolioInteractor.getPortfolioById(id)
-                _portfolio.value = portfolioResult.getOrThrow()
-            } catch (e: Exception) {
-                _error.value = e.toString()
+            val portfolioResult = portfolioInteractor.getPortfolioById(id)
+
+            portfolioResult.onSuccess { portfolio ->
+                _portfolio.value = portfolio
+            }.onFailure { exception ->
+                _error.value = exception.toString()
             }
         }
     }
