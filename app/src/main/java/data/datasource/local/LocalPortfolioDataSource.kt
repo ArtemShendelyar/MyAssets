@@ -26,6 +26,12 @@ class LocalPortfolioDataSource @Inject constructor() : PortfolioDataSource {
         }
     }
 
+    override suspend fun createAndInitPortfolio(portfolio: Portfolio) {
+        return withContext(Dispatchers.IO) {
+            ExamplePortfolioList.createAndInitPortfolio(portfolio)
+        }
+    }
+
     override suspend fun updatePortfolio(id: Int, portfolio: Portfolio) {
         return withContext(Dispatchers.IO) {
             ExamplePortfolioList.updatePortfolio(id, portfolio)

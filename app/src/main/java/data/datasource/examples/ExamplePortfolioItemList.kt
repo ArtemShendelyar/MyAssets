@@ -9,7 +9,7 @@ import java.time.LocalDate
 object ExamplePortfolioItemList {
     private val portfolioItemList = mutableListOf(
         PortfolioItem(
-            id = 1,
+            id = 0,
             name = "My dollars",
             priceCurrency = "USD",
             priceHistory = mapOf(
@@ -21,7 +21,7 @@ object ExamplePortfolioItemList {
             )
         ),
         PortfolioItem(
-            id = 2,
+            id = 1,
             name = "My apple stocks",
             priceCurrency = "USD",
             priceHistory = mapOf(

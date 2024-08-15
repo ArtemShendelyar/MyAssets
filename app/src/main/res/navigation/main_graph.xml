@@ -18,7 +18,22 @@
         android:id="@+id/portfolio_list_fragment"
         android:name="com.example.myassets.presentation.ui.portfolios.PortfolioListFragment"
         android:label="portfolio"
-        tools:layout="@layout/fragment_portfolio_list" />
+        tools:layout="@layout/fragment_portfolio_list" >
+        <action
+            android:id="@+id/action_to_portfolio_details_fragment"
+            app:destination="@id/portfolio_details_fragment" >
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/portfolio_details_fragment"
+        android:name="com.example.myassets.presentation.ui.portfolios.PortfolioDetailsFragment"
+        android:label="portfolioDetails"
+        tools:layout="@layout/fragment_portfolio_details" >
+        <argument
+            android:name="portfolioId"
+            app:argType="integer"
+            app:nullable="false" />
+    </fragment>
     <fragment
         android:id="@+id/fragment_settings"
         android:name="com.example.myassets.presentation.ui.settings.SettingsFragment"

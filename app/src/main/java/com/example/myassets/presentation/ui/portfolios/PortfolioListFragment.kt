@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.myassets.databinding.FragmentPortfolioListBinding
 import com.example.myassets.presentation.ui.portfolios.rv.PortfolioListRvAdapter
 import com.example.myassets.presentation.ui.portfolios.rv.listeners.PortfolioListItemListener
@@ -24,7 +25,11 @@ class PortfolioListFragment : BasicFragment<FragmentPortfolioListBinding>() {
         super.onViewCreated(view, savedInstanceState)
         val adapter = PortfolioListRvAdapter(itemListener = object : PortfolioListItemListener {
             override fun onItemClick(itemId: Int) {
-                TODO("Реализация перехода на детальный экран")
+                findNavController().navigate(
+                    PortfolioListFragmentDirections.actionToPortfolioDetailsFragment(
+                        itemId
+                    )
+                )
             }
 
             override fun onSelect(itemId: Int) {

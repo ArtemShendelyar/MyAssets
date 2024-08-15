@@ -28,6 +28,12 @@ class PortfolioRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun createAndInitPortfolio(portfolio: Portfolio) {
+        return withContext(Dispatchers.IO) {
+            dataSource.createAndInitPortfolio(portfolio)
+        }
+    }
+
     override suspend fun deletePortfolio(id: Int) {
         return withContext(Dispatchers.IO) {
             dataSource.deletePortfolio(id)
