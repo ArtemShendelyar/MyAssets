@@ -9,6 +9,7 @@ plugins {
     id 'androidx.navigation.safeargs'
     id 'com.google.dagger.hilt.android'
     id 'kotlin-kapt'
+    id 'org.jetbrains.kotlin.plugin.serialization'
 }
 
 android {
@@ -57,4 +58,8 @@ dependencies {
     androidTestImplementation libs.androidx.espresso.core
     implementation libs.androidx.navigation.fragment.ktx
     implementation libs.androidx.navigation.ui.ktx
+    implementation libs.kotlinx.serialization.json
+    implementation libs.converter.kotlinx.serialization
+    implementation libs.retrofit
+    implementation libs.okhttp
 }
