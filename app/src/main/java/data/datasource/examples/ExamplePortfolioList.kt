@@ -5,22 +5,25 @@ import domain.entity.Portfolio
 object ExamplePortfolioList {
     private val portfolioList = mutableListOf(
         Portfolio(
-            id = 1,
+            id = 0,
             name = "My first portfolio"
         ),
         Portfolio(
-            id = 2,
+            id = 1,
             name = "My second portfolio"
         ),
         Portfolio(
-            id = 3,
+            id = 2,
             name = "My third portfolio"
         )
     )
 
     fun getPortfolioList() = portfolioList
 
-    fun getPortfolioById(id: Int) = portfolioList.elementAt(id)
+    fun getPortfolioById(id: Int): Portfolio {
+        return portfolioList.find { portfolio -> portfolio.id == id }
+            ?: throw NoSuchElementException("Portfolio with ID '$id' not found.")
+    }
 
     fun createPortfolio() {
         val newPortfolio = Portfolio(
@@ -30,11 +33,20 @@ object ExamplePortfolioList {
         portfolioList.add(newPortfolio)
     }
 
+    fun createAndInitPortfolio(portfolio: Portfolio) {
+        portfolioList.add(portfolio)
+    }
+
     fun updatePortfolio(id: Int, portfolio: Portfolio) {
         portfolioList[id] = portfolio
     }
 
     fun deletePortfolio(id: Int) {
-        portfolioList.removeAt(id)
+        try {
+            val index = portfolioList.indexOfFirst { portfolio -> portfolio.id == id }
+            portfolioList.removeAt(index)
+        } catch (e: IndexOutOfBoundsException) {
+            throw NoSuchElementException("Portfolio with ID '$id' not found.")
+        }
     }
 }
