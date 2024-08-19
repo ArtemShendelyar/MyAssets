@@ -19,6 +19,7 @@ class HomeFragment : BasicFragment<FragmentHomeBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.fetchStats()
         viewModel.portfoliosCount.observe(viewLifecycleOwner) { count ->
             with(binding) {
                 textPortfoliosCount.text = count.toString()
@@ -31,8 +32,8 @@ class HomeFragment : BasicFragment<FragmentHomeBinding>() {
         }
     }
 
-    override fun onResume() {
+   /* override fun onResume() {
         super.onResume()
         viewModel.fetchStats()
-    }
+    }*/
 }

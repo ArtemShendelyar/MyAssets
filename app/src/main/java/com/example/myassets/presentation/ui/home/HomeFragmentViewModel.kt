@@ -20,10 +20,6 @@ class HomeFragmentViewModel @Inject constructor(
     private val _assetsCount = MutableLiveData<Int>()
     val assetsCount: LiveData<Int> get() = _assetsCount
 
-    init {
-        fetchStats()
-    }
-
     fun fetchStats() {
         viewModelScope.launch {
             _portfoliosCount.value = portfolioInteractor.getPortfolioList().count()
