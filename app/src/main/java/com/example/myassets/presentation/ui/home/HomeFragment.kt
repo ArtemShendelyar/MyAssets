@@ -31,9 +31,4 @@ class HomeFragment : BasicFragment<FragmentHomeBinding>() {
             }
         }
     }
-
-   /* override fun onResume() {
-        super.onResume()
-        viewModel.fetchStats()
-    }*/
 }
