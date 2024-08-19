@@ -47,9 +47,4 @@ class PortfolioListFragment : BasicFragment<FragmentPortfolioListBinding>() {
             viewModel.createPortfolio()
         }
     }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.fetchPortfolioList()
-    }
 }

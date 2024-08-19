@@ -15,7 +15,7 @@ class PortfolioRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getPortfolioById(id: Int): Portfolio? {
+    override suspend fun getPortfolioById(id: Int): Portfolio {
         return withContext(Dispatchers.IO) {
             dataSource.getPortfolioById(id)
         }
@@ -24,12 +24,6 @@ class PortfolioRepositoryImpl @Inject constructor(
     override suspend fun createPortfolio() {
         return withContext(Dispatchers.IO) {
             dataSource.createPortfolio()
-        }
-    }
-
-    override suspend fun createAndInitPortfolio(portfolio: Portfolio) {
-        return withContext(Dispatchers.IO) {
-            dataSource.createAndInitPortfolio(portfolio)
         }
     }
 

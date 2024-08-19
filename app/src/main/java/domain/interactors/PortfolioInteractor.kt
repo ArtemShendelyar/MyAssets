@@ -29,13 +29,6 @@ class PortfolioInteractor @Inject constructor(
         portfolioRepository.updatePortfolio(id, portfolio)
     }
 
-    suspend fun renamePortfolio(id: Int, newName: String) {
-        val renamedPortfolioResult = getPortfolioById(id)
-        val renamedPortfolio = renamedPortfolioResult.getOrThrow()
-        portfolioRepository.deletePortfolio(id)
-        portfolioRepository.createAndInitPortfolio(renamedPortfolio.copy(name = newName))
-    }
-
     suspend fun deletePortfolio(id: Int) {
         portfolioRepository.deletePortfolio(id)
     }

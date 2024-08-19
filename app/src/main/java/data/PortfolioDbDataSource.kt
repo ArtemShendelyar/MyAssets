@@ -6,6 +6,7 @@ import data.local.db.entity.PortfolioDb
 import data.local.db.entity.toDomain
 import domain.entity.Portfolio
 import javax.inject.Inject
+import kotlin.random.Random
 
 class PortfolioDbDataSource @Inject constructor(
     private val portfolioDao: PortfolioDao
@@ -23,18 +24,18 @@ class PortfolioDbDataSource @Inject constructor(
     }
 
     override suspend fun createPortfolio() {
-        val portfolioDb = PortfolioDb(portfolioDao.getSize() + 1, "New portfolio")
-        portfolioDao.createPortfolio(portfolioDb)
+        val portfolioDb = PortfolioDb(Random.nextInt(), name = "New portfolio")
+        portfolioDao.upsertPortfolio(portfolioDb)
     }
 
     override suspend fun createAndInitPortfolio(portfolio: Portfolio) {
         val portfolioDb = PortfolioDb(portfolio.id, portfolio.name)
-        portfolioDao.createPortfolio(portfolioDb)
+        portfolioDao.upsertPortfolio(portfolioDb)
     }
 
     override suspend fun updatePortfolio(id: Int, portfolio: Portfolio) {
         val portfolioDb = PortfolioDb(id, portfolio.name)
-        portfolioDao.updatePortfolio(portfolioDb)
+        portfolioDao.upsertPortfolio(portfolioDb)
     }
 
     override suspend fun deletePortfolio(id: Int) {

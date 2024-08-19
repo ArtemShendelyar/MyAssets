@@ -21,7 +21,7 @@ class PortfolioListViewModel @Inject constructor(
         fetchPortfolioList()
     }
 
-    fun fetchPortfolioList() {
+    private fun fetchPortfolioList() {
         viewModelScope.launch {
             _portfolioList.value = portfolioInteractor.getPortfolioList()
         }

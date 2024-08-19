@@ -34,7 +34,7 @@ class PortfolioDetailsViewModel @Inject constructor(
     fun renamePortfolio(portfolioId: Int, newName: String) {
         viewModelScope.launch {
             try {
-                portfolioInteractor.renamePortfolio(portfolioId, newName)
+                portfolioInteractor.updatePortfolio(portfolioId, Portfolio(portfolioId, newName))
                 fetchPortfolioById(portfolioId)
             } catch (e: Exception) {
                 _error.value = e.toString()

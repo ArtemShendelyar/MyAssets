@@ -7,7 +7,7 @@ import domain.entity.Portfolio
 
 @Entity(tableName = "portfolio_list")
 data class PortfolioDb(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo("id")
     val id: Int,
     @ColumnInfo("name")

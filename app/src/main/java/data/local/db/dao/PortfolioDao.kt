@@ -1,15 +1,14 @@
 package data.local.db.dao
 
 import androidx.room.Dao
-import androidx.room.Insert
 import androidx.room.Query
-import androidx.room.Update
+import androidx.room.Upsert
 import data.local.db.entity.PortfolioDb
 
 @Dao
 interface PortfolioDao {
-    @Insert(entity = PortfolioDb::class)
-    fun createPortfolio(portfolio: PortfolioDb)
+    @Upsert(entity = PortfolioDb::class)
+    fun upsertPortfolio(portfolioDb: PortfolioDb)
 
     @Query("DELETE FROM portfolio_list WHERE portfolio_list.id == :portfolioId")
     fun deletePortfolioById(portfolioId: Int)
@@ -19,10 +18,4 @@ interface PortfolioDao {
 
     @Query("SELECT * FROM portfolio_list WHERE portfolio_list.id == :portfolioId")
     fun getPortfolioById(portfolioId: Int): PortfolioDb
-
-    @Update(entity = PortfolioDb::class)
-    fun updatePortfolio(portfolioDb: PortfolioDb)
-
-    @Query("SELECT COUNT(*) FROM portfolio_list")
-    fun getSize(): Int
 }
