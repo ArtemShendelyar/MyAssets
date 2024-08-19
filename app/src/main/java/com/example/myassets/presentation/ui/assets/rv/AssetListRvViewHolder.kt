@@ -1,6 +1,5 @@
 package com.example.myassets.presentation.ui.assets.rv
 
-import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myassets.databinding.AssetListRvCardBinding
 import domain.entity.PortfolioItem
@@ -11,7 +10,7 @@ class AssetListRvViewHolder (
     fun bind(portfolioItem: PortfolioItem) {
         binding.assetName.text = portfolioItem.name
         itemView.setOnClickListener {
-            Log.i("WWAWDWADAWD","ALLO: ${portfolioItem.name}")
+            TODO("Реализация переключения на детальный экран")
         }
     }
 }
