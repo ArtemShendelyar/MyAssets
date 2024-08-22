@@ -15,4 +15,8 @@
     <string name="settings_language">Язык</string>
     <string name="portfolio_select">Выбрать</string>
     <string name="portfolio_list_label">Мои портфели</string>
+    <string name="home_text_welcome">Добро пожаловать!</string>
+    <string name="home_text_now">Сейчас у вас:</string>
+    <string name="home_text_portfolios">портфолио</string>
+    <string name="home_text_assets">активов</string>
 </resources>
