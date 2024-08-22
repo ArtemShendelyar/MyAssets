@@ -45,7 +45,7 @@ class PortfolioListFragment : BasicFragment<FragmentPortfolioListBinding>() {
         }
 
         binding.createPortfolioButton.setOnClickListener {
-            viewModel.createPortfolio(resources.getString(R.string.NewPortfolio))
+            viewModel.createPortfolio(resources.getString(R.string.new_portfolio))
         }
     }
 }
