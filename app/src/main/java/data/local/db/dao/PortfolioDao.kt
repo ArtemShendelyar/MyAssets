@@ -18,5 +18,5 @@ interface PortfolioDao {
     fun getPortfolioList(): Flow<List<PortfolioDb>>
 
     @Query("SELECT * FROM portfolio_list WHERE portfolio_list.id == :portfolioId")
-    fun getPortfolioById(portfolioId: Int): Flow<PortfolioDb>
+    fun getPortfolioById(portfolioId: Int): PortfolioDb
 }

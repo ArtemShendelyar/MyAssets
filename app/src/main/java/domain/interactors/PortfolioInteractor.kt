@@ -14,7 +14,7 @@ class PortfolioInteractor @Inject constructor(
         return portfolioRepository.getPortfolios()
     }
 
-    suspend fun getPortfolioById(id: Int): Flow<Portfolio> {
+    suspend fun getPortfolioById(id: Int): Portfolio {
         return portfolioRepository.getPortfolioById(id)
     }
 

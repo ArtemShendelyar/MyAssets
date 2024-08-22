@@ -14,7 +14,4 @@ data class PortfolioDb(
     val name: String
 )
 
-fun PortfolioDb.toDomain(): Portfolio {
-    val portfolio = Portfolio(id, name)
-    return portfolio
-}
+fun PortfolioDb.toDomain(): Portfolio = Portfolio(id, name)

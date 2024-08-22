@@ -21,16 +21,13 @@ class PortfolioDbDataSource @Inject constructor(
         }
     }
 
-    override suspend fun getPortfolioById(id: Int): Flow<Portfolio> {
-        val portfolio = portfolioDao.getPortfolioById(id)
-        return portfolio.map {
-            it.toDomain()
-        }
+    override suspend fun getPortfolioById(id: Int): Portfolio {
+        return portfolioDao.getPortfolioById(id).toDomain()
     }
 
     override suspend fun createPortfolio(name: String) {
-        val portfolioDb = PortfolioDb(0, name)
-        portfolioDao.upsertPortfolio(portfolioDb)
+        val portfolio = PortfolioDb(name = name)
+        portfolioDao.upsertPortfolio(portfolio)
     }
 
     override suspend fun updatePortfolio(id: Int, portfolio: Portfolio) {

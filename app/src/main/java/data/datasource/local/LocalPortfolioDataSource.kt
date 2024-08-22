@@ -18,11 +18,9 @@ class LocalPortfolioDataSource @Inject constructor() : PortfolioDataSource {
         }
     }
 
-    override suspend fun getPortfolioById(id: Int): Flow<Portfolio> {
+    override suspend fun getPortfolioById(id: Int): Portfolio {
         return withContext(Dispatchers.IO) {
-            flow {
-                emit(ExamplePortfolioList.getPortfolioById(id))
-            }
+            ExamplePortfolioList.getPortfolioById(id)
         }
     }
 

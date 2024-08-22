@@ -16,7 +16,7 @@ class PortfolioRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getPortfolioById(id: Int): Flow<Portfolio> {
+    override suspend fun getPortfolioById(id: Int): Portfolio {
         return withContext(Dispatchers.IO) {
             dataSource.getPortfolioById(id)
         }

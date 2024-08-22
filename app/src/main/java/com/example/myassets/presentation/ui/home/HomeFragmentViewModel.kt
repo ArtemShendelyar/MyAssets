@@ -22,10 +22,10 @@ class HomeFragmentViewModel @Inject constructor(
 
     fun fetchStats() {
         viewModelScope.launch {
-             portfolioInteractor.getPortfolioList().collect{
-                 _portfoliosCount.value = it.count()
-            }
             _assetsCount.value = portfolioItemInteractor.getPortfolioItemsList().count()
+            portfolioInteractor.getPortfolioList().collect {
+                _portfoliosCount.value = it.count()
+            }
         }
     }
 }
