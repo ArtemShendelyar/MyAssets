@@ -9,7 +9,7 @@ import domain.entity.Portfolio
 data class PortfolioDb(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo("id")
-    val id: Int,
+    val id: Int = 0,
     @ColumnInfo("name")
     val name: String
 )

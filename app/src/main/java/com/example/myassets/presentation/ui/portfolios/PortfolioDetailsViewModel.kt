@@ -21,12 +21,8 @@ class PortfolioDetailsViewModel @Inject constructor(
 
     fun fetchPortfolioById(id: Int) {
         viewModelScope.launch {
-            val portfolioResult = portfolioInteractor.getPortfolioById(id)
-
-            portfolioResult.onSuccess { portfolio ->
-                _portfolio.value = portfolio
-            }.onFailure { exception ->
-                _error.value = exception.toString()
+            portfolioInteractor.getPortfolioById(id).collect {
+                _portfolio.value = it
             }
         }
     }
@@ -35,7 +31,6 @@ class PortfolioDetailsViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 portfolioInteractor.updatePortfolio(portfolioId, Portfolio(portfolioId, newName))
-                fetchPortfolioById(portfolioId)
             } catch (e: Exception) {
                 _error.value = e.toString()
             }
