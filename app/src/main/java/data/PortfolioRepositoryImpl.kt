@@ -1,36 +1,30 @@
 package data
 
-import data.datasource.interfaces.PortfolioDataSource
 import domain.entity.Portfolio
 import domain.repository.PortfolioRepository
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
 class PortfolioRepositoryImpl @Inject constructor(
-    private val dataSource: PortfolioDataSource
+    private val dataSource: PortfolioDbDataSource
 ) : PortfolioRepository {
-    override suspend fun getPortfolios(): List<Portfolio> {
+    override suspend fun getPortfolios(): Flow<List<Portfolio>> {
         return withContext(Dispatchers.IO) {
             dataSource.getPortfolios()
         }
     }
 
-    override suspend fun getPortfolioById(id: Int): Portfolio? {
+    override suspend fun getPortfolioById(id: Int): Portfolio {
         return withContext(Dispatchers.IO) {
             dataSource.getPortfolioById(id)
         }
     }
 
-    override suspend fun createPortfolio() {
+    override suspend fun createPortfolio(name: String) {
         return withContext(Dispatchers.IO) {
-            dataSource.createPortfolio()
-        }
-    }
-
-    override suspend fun createAndInitPortfolio(portfolio: Portfolio) {
-        return withContext(Dispatchers.IO) {
-            dataSource.createAndInitPortfolio(portfolio)
+            dataSource.createPortfolio(name)
         }
     }
 

@@ -12,6 +12,7 @@ import data.datasource.interfaces.PortfolioItemDataSource
 import data.datasource.local.LocalPortfolioDataSource
 import data.datasource.local.LocalPortfolioItemDataSource
 import domain.repository.CurrencyExchangeRateRepository
+import domain.repository.PortfolioItemRepository
 import domain.repository.PortfolioRepository
 import javax.inject.Singleton
 
@@ -28,7 +29,7 @@ interface DataModule {
     @Singleton
     fun bindPortfolioItemRepository(
         repositoryImpl: PortfolioItemRepositoryImpl
-    ): PortfolioItemRepositoryImpl
+    ): PortfolioItemRepository
 
     @Binds
     @Singleton

@@ -29,4 +29,9 @@
     <string name="error">Something went wrong: </string>
     <string name="portfolio_delete_confirmation">Delete this portfolio? This action cannot be undone!</string>
     <string name="portfolio_delete_confirmation_yes">Yes, delete it</string>
+    <string name="home_text_welcome">Welcome back!</string>
+    <string name="home_text_now">Now you have:</string>
+    <string name="home_text_portfolios">portfolios</string>
+    <string name="home_text_assets">assets</string>
+    <string name="new_portfolio">New Portfolio\n</string>
 </resources>
