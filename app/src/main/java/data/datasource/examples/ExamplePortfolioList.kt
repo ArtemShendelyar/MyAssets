@@ -25,10 +25,10 @@ object ExamplePortfolioList {
             ?: throw NoSuchElementException("Portfolio with ID '$id' not found.")
     }
 
-    fun createPortfolio() {
+    fun createPortfolio(name: String) {
         val newPortfolio = Portfolio(
             id = portfolioList.size,
-            name = "New portfolio"
+            name = name
         )
         portfolioList.add(newPortfolio)
     }
