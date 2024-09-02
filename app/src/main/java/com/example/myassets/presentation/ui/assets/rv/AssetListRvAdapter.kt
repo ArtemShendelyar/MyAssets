@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myassets.databinding.AssetListRvCardBinding
 import domain.entity.PortfolioItem
 
-
 class AssetListRvAdapter : RecyclerView.Adapter<AssetListRvViewHolder>() {
     private var items = emptyList<PortfolioItem>()
 
