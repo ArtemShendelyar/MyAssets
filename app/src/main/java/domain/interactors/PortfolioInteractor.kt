@@ -2,38 +2,28 @@ package domain.interactors
 
 import domain.entity.Portfolio
 import domain.repository.PortfolioRepository
-import domain.utils.resultOf
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.coroutines.flow.Flow
 
 @Singleton
 class PortfolioInteractor @Inject constructor(
     private val portfolioRepository: PortfolioRepository
 ) {
-    suspend fun getPortfolioList(): List<Portfolio> {
+    suspend fun getPortfolioList(): Flow<List<Portfolio>> {
         return portfolioRepository.getPortfolios()
     }
 
-    suspend fun getPortfolioById(id: Int): Result<Portfolio> {
-        return resultOf {
-            portfolioRepository.getPortfolioById(id)
-                ?: throw Exception("Null Portfolio Item")
-        }
+    suspend fun getPortfolioById(id: Int): Portfolio {
+        return portfolioRepository.getPortfolioById(id)
     }
 
-    suspend fun createPortfolio() {
-        portfolioRepository.createPortfolio()
+    suspend fun createPortfolio(name: String) {
+        portfolioRepository.createPortfolio(name)
     }
 
     suspend fun updatePortfolio(id: Int, portfolio: Portfolio) {
         portfolioRepository.updatePortfolio(id, portfolio)
-    }
-
-    suspend fun renamePortfolio(id: Int, newName: String) {
-        val renamedPortfolioResult = getPortfolioById(id)
-        val renamedPortfolio = renamedPortfolioResult.getOrThrow()
-        portfolioRepository.deletePortfolio(id)
-        portfolioRepository.createAndInitPortfolio(renamedPortfolio.copy(name = newName))
     }
 
     suspend fun deletePortfolio(id: Int) {

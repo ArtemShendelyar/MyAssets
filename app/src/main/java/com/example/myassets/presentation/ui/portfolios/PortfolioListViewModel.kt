@@ -18,19 +18,16 @@ class PortfolioListViewModel @Inject constructor(
     val portfolioList: LiveData<List<Portfolio>> get() = _portfolioList
 
     init {
-        fetchPortfolioList()
-    }
-
-    private fun fetchPortfolioList() {
         viewModelScope.launch {
-            _portfolioList.value = portfolioInteractor.getPortfolioList()
+            portfolioInteractor.getPortfolioList().collect {
+                _portfolioList.value = it
+            }
         }
     }
 
-    fun createPortfolio() {
+    fun createPortfolio(name: String) {
         viewModelScope.launch {
-            portfolioInteractor.createPortfolio()
+            portfolioInteractor.createPortfolio(name)
         }
-        fetchPortfolioList()
     }
 }

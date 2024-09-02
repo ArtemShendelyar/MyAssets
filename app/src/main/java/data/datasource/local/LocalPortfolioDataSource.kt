@@ -5,12 +5,16 @@ import data.datasource.interfaces.PortfolioDataSource
 import domain.entity.Portfolio
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
 
 class LocalPortfolioDataSource @Inject constructor() : PortfolioDataSource {
-    override suspend fun getPortfolios(): List<Portfolio> {
+    override suspend fun getPortfolios(): Flow<List<Portfolio>> {
         return withContext(Dispatchers.IO) {
-            ExamplePortfolioList.getPortfolioList()
+            flow {
+                emit(ExamplePortfolioList.getPortfolioList())
+            }
         }
     }
 
@@ -20,15 +24,9 @@ class LocalPortfolioDataSource @Inject constructor() : PortfolioDataSource {
         }
     }
 
-    override suspend fun createPortfolio() {
+    override suspend fun createPortfolio(name: String) {
         return withContext(Dispatchers.IO) {
-            ExamplePortfolioList.createPortfolio()
-        }
-    }
-
-    override suspend fun createAndInitPortfolio(portfolio: Portfolio) {
-        return withContext(Dispatchers.IO) {
-            ExamplePortfolioList.createAndInitPortfolio(portfolio)
+            ExamplePortfolioList.createPortfolio(name)
         }
     }
 

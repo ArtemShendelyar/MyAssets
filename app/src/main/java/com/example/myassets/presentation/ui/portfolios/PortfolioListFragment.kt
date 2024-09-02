@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.myassets.R
 import com.example.myassets.databinding.FragmentPortfolioListBinding
 import com.example.myassets.presentation.ui.portfolios.rv.PortfolioListRvAdapter
 import com.example.myassets.presentation.ui.portfolios.rv.listeners.PortfolioListItemListener
@@ -44,7 +45,7 @@ class PortfolioListFragment : BasicFragment<FragmentPortfolioListBinding>() {
         }
 
         binding.createPortfolioButton.setOnClickListener {
-            viewModel.createPortfolio()
+            viewModel.createPortfolio(resources.getString(R.string.new_portfolio))
         }
     }
 }

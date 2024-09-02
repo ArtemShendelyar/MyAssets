@@ -18,4 +18,8 @@
     <string name="new_portfolio_button">Create new portfolio</string>
     <string name="label_of_assets">Label of assets</string>
     <string name="asset_delete">Delete</string>
+    <string name="home_text_welcome">Welcome back!</string>
+    <string name="home_text_now">Now you have:</string>
+    <string name="home_text_portfolios">portfolios</string>
+    <string name="home_text_assets">assets</string>
 </resources>

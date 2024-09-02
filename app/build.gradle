@@ -6,9 +6,10 @@ buildscript {
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id 'androidx.navigation.safeargs'
-    id 'com.google.dagger.hilt.android'
-    id 'kotlin-kapt'
+    alias(libs.plugins.navigation.safeargs)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -44,6 +45,9 @@ android {
 }
 
 dependencies {
+    kapt libs.androidx.room.compiler
+    implementation libs.androidx.room.runtime
+    annotationProcessor libs.androidx.room.compiler
     implementation libs.androidx.datastore.preferences
     implementation libs.hilt.android
     kapt libs.hilt.compiler
@@ -57,4 +61,9 @@ dependencies {
     androidTestImplementation libs.androidx.espresso.core
     implementation libs.androidx.navigation.fragment.ktx
     implementation libs.androidx.navigation.ui.ktx
+    implementation libs.androidx.room.ktx
+    implementation libs.kotlinx.serialization.json
+    implementation libs.converter.kotlinx.serialization
+    implementation libs.retrofit
+    implementation libs.okhttp
 }
