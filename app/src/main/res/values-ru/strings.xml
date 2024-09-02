@@ -16,7 +16,7 @@
     <string name="portfolio_select">Выбрать</string>
     <string name="portfolio_list_label">Мои портфели</string>
     <string name="new_portfolio_button">Создать новый портфель</string>
-    <string name="label_of_assets">Оглавление ассетов</string>
+    <string name="label_of_assets">Активы</string>
     <string name="asset_delete">Удалить</string>
     <string name="home_text_welcome">Добро пожаловать!</string>
     <string name="home_text_now">Сейчас у вас:</string>

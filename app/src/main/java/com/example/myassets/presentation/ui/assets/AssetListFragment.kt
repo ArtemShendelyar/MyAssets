@@ -24,8 +24,8 @@ class AssetListFragment : BasicFragment<FragmentAssetListBinding>() {
         val adapter = AssetListRvAdapter()
         binding.assetListRv.adapter = adapter
 
-        viewModel.portfolioItemsList.observe(viewLifecycleOwner) { portfolioList ->
-            adapter.submit(portfolioList)
+        viewModel.portfolioItemsList.observe(viewLifecycleOwner) { portfolioItemsList ->
+            adapter.submit(portfolioItemsList)
         }
     }
 }
