@@ -17,18 +17,26 @@ class PortfolioItemRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getPortfolioItemById(id: Int): PortfolioItem? {
-        TODO("Not yet implemented")
+        return withContext(Dispatchers.IO) {
+            dataSource.getPortfolioItemById(id)
+        }
     }
 
     override suspend fun createPortfolioItem(portfolioItem: PortfolioItem) {
-        TODO("Not yet implemented")
+        return withContext(Dispatchers.IO) {
+            dataSource.createPortfolioItem(portfolioItem)
+        }
     }
 
     override suspend fun deletePortfolioItem(id: Int) {
-        TODO("Not yet implemented")
+        return withContext(Dispatchers.IO) {
+            dataSource.deletePortfolioItem(id)
+        }
     }
 
     override suspend fun updatePortfolioItem(id: Int, portfolioItem: PortfolioItem) {
-        TODO("Not yet implemented")
+        return withContext(Dispatchers.IO) {
+            updatePortfolioItem(id, portfolioItem)
+        }
     }
 }
