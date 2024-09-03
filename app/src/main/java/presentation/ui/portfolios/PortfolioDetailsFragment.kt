@@ -28,7 +28,7 @@ class PortfolioDetailsFragment : BasicFragment<FragmentPortfolioDetailsBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val args: presentation.ui.portfolios.PortfolioDetailsFragmentArgs by navArgs()
+        val args: PortfolioDetailsFragmentArgs by navArgs()
         val portfolioId = args.portfolioId
         viewModel.fetchPortfolioById(portfolioId)
 
