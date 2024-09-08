@@ -7,83 +7,169 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.myassets.R
-import com.example.myassets.databinding.FragmentPortfolioDetailsBinding
-import com.example.myassets.presentation.util.BasicFragment
 import dagger.hilt.android.AndroidEntryPoint
 import domain.entity.Portfolio
 
 @AndroidEntryPoint
-class PortfolioDetailsFragment : BasicFragment<FragmentPortfolioDetailsBinding>() {
+class PortfolioDetailsFragment : Fragment() {
     private val viewModel: PortfolioDetailsViewModel by viewModels()
 
-    override fun inflateViewBinding(
+    override fun onCreateView(
         inflater: LayoutInflater,
-        container: ViewGroup?
-    ) = FragmentPortfolioDetailsBinding.inflate(inflater, container, false)
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         val args: PortfolioDetailsFragmentArgs by navArgs()
         val portfolioId = args.portfolioId
         viewModel.fetchPortfolioById(portfolioId)
 
-        viewModel.portfolio.observe(viewLifecycleOwner) { portfolio ->
-            bindPortfolio(portfolio)
-        }
-
-        binding.backButton.setOnClickListener {
-            findNavController().navigateUp()
-        }
-
-        binding.renameButton.setOnClickListener {
-            viewModel.renamePortfolio(portfolioId, binding.renameEditText.text.toString())
-        }
-
-        binding.deleteButton.setOnClickListener {
-            val dialogClickListener =
-                DialogInterface.OnClickListener { dialog, which ->
-                    when (which) {
-                        DialogInterface.BUTTON_POSITIVE -> {
-                            viewModel.deletePortfolio(portfolioId)
-                            findNavController().navigateUp()
-                        }
-                    }
-                }
-            val builder: AlertDialog.Builder = AlertDialog.Builder(context)
-            builder.setMessage(resources.getString(R.string.portfolio_delete_confirmation))
-                .setPositiveButton(
-                    resources.getString(R.string.portfolio_delete_confirmation_yes),
-                    dialogClickListener
-                )
-                .setNegativeButton(resources.getString(R.string.cancel), dialogClickListener)
-                .show()
-        }
-
-        viewModel.error.observe(
-            viewLifecycleOwner
-        ) { error ->
+        viewModel.error.observe(viewLifecycleOwner) { error ->
             error?.let {
                 Toast.makeText(
                     context,
-                    resources.getString(R.string.error) + error,
+                    getString(R.string.error) + it,
                     Toast.LENGTH_SHORT
-                )
-                    .show()
+                ).show()
                 viewModel.resetError()
                 findNavController().navigateUp()
             }
         }
+
+        return ComposeView(requireContext()).apply {
+            setContent {
+                DetailsScreen(viewModel)
+            }
+        }
     }
 
-    private fun bindPortfolio(portfolio: Portfolio?) {
-        with(binding) {
-            label.text = portfolio?.name ?: resources.getString(R.string.loading)
-            renameEditText.setText(portfolio?.name ?: resources.getString(R.string.loading))
+    @Composable
+    fun DetailsScreen(viewModel: PortfolioDetailsViewModel) {
+        var newName by rememberSaveable { mutableStateOf("") }
+        val portfolio by viewModel.portfolio.observeAsState()
+        DetailsContent(
+            portfolio,
+            newName,
+            onRenameClick = {
+                portfolio?.let { viewModel.renamePortfolio(it.id, newName) }
+            },
+            onDeleteClick = {
+                portfolio?.let {
+                    val dialogClickListener =
+                        DialogInterface.OnClickListener { dialog, which ->
+                            when (which) {
+                                DialogInterface.BUTTON_POSITIVE -> {
+                                    viewModel.deletePortfolio(it.id)
+                                    findNavController().navigateUp()
+                                }
+                            }
+                        }
+                    val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+                    builder.setMessage(R.string.portfolio_delete_confirmation)
+                        .setPositiveButton(
+                            R.string.portfolio_delete_confirmation_yes,
+                            dialogClickListener
+                        )
+                        .setNegativeButton(R.string.cancel, dialogClickListener)
+                        .show()
+                }
+            },
+            onBackClick = {
+                findNavController().navigateUp()
+            },
+            onNameChange = {
+                newName = it
+            }
+        )
+    }
+
+    @Composable
+    fun DetailsContent(
+        portfolio: Portfolio?,
+        newName: String,
+        onRenameClick: () -> Unit,
+        onDeleteClick: () -> Unit,
+        onBackClick: () -> Unit,
+        onNameChange: (String) -> Unit
+    ) {
+        Column(
+            modifier = Modifier
+                .padding(20.dp)
+                .fillMaxSize()
+        ) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.back),
+                    contentDescription = stringResource(id = R.string.back),
+                    modifier = Modifier
+                        .clickable(onClick = onBackClick)
+                        .padding(end = 8.dp)
+                )
+                Text(
+                    text = portfolio?.name ?: stringResource(id = R.string.loading),
+                    fontSize = 24.sp
+                )
+            }
+            OutlinedTextField(
+                value = newName,
+                onValueChange = onNameChange,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 8.dp),
+                label = { Text(stringResource(R.string.new_name)) }
+            )
+            Row(
+                modifier = Modifier
+                    .padding(4.dp)
+                    .fillMaxWidth()
+            ) {
+                Button(
+                    onClick = onRenameClick,
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(end = 8.dp)
+                ) {
+                    Text(stringResource(R.string.rename))
+                }
+                Button(
+                    onClick = onDeleteClick,
+                    modifier = Modifier
+                        .weight(1f)
+                ) {
+                    Text(stringResource(R.string.portfolio_delete))
+                }
+            }
         }
     }
 }

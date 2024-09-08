@@ -19,7 +19,9 @@
     <string name="portfolio_select">Select</string>
     <string name="portfolio_list_label">My portfolios</string>
     <string name="new_portfolio_button">Create new portfolio</string>
+    <string name="asset_delete">Delete</string>
     <string name="rename">Rename</string>
+    <string name="new_name">New name</string>
     <string name="portfolio_delete">Delete portfolio</string>
     <string name="back">Back</string>
     <string name="yes">Yes</string>
@@ -29,10 +31,10 @@
     <string name="error">Something went wrong: </string>
     <string name="portfolio_delete_confirmation">Delete this portfolio? This action cannot be undone!</string>
     <string name="portfolio_delete_confirmation_yes">Yes, delete it</string>
+    <string name="new_portfolio">New Portfolio</string>
     <string name="label_of_assets">Assets</string>
     <string name="home_text_welcome">Welcome back!</string>
     <string name="home_text_now">Now you have:</string>
     <string name="home_text_portfolios">portfolios</string>
     <string name="home_text_assets">assets</string>
-    <string name="new_portfolio">New Portfolio\n</string>
 </resources>
