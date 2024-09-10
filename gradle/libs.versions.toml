@@ -60,6 +60,6 @@ androidx-runtime-livedata = { group = "androidx.compose.runtime", name = "runtim
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid" }
-navigation-safeargs = { id = "androidx.navigation.safeargs", version.ref = "navigationFragmentKtx" }
+navigation-safeargs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigationFragmentKtx" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinSerialization" }
