@@ -65,13 +65,13 @@ class PortfolioDetailsFragment : Fragment() {
 
         return ComposeView(requireContext()).apply {
             setContent {
-                DetailsScreen(viewModel)
+                DetailsScreen()
             }
         }
     }
 
     @Composable
-    fun DetailsScreen(viewModel: PortfolioDetailsViewModel) {
+    fun DetailsScreen() {
         var newName by rememberSaveable { mutableStateOf("") }
         val portfolio by viewModel.portfolio.observeAsState()
         DetailsContent(
