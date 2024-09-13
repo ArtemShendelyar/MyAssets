@@ -1,8 +1,4 @@
 <resources>
-    <!-- Костыль. Я пока не знаю как его исправить. -->
-    <string name="locales_for_UI" translatable="false">Русский, English</string>
-    <string name="locales" translatable="false">ru, en</string>
-    <!-- Костыль. -->
     <string name="app_name">MyAssets</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="nav_bar_settings">Settings</string>
