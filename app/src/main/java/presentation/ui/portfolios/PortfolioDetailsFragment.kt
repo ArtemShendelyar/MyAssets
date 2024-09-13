@@ -35,8 +35,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.myassets.R
-import com.example.myassets.databinding.FragmentPortfolioDetailsBinding
-import presentation.util.BasicFragment
 import dagger.hilt.android.AndroidEntryPoint
 import domain.entity.Portfolio
 
@@ -67,13 +65,13 @@ class PortfolioDetailsFragment : Fragment() {
 
         return ComposeView(requireContext()).apply {
             setContent {
-                DetailsScreen(viewModel)
+                DetailsScreen()
             }
         }
     }
 
     @Composable
-    fun DetailsScreen(viewModel: PortfolioDetailsViewModel) {
+    fun DetailsScreen() {
         var newName by rememberSaveable { mutableStateOf("") }
         val portfolio by viewModel.portfolio.observeAsState()
         DetailsContent(
