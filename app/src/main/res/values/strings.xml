@@ -31,6 +31,6 @@
     <string name="home_text_now">Now you have:</string>
     <string name="home_text_portfolios">portfolios</string>
     <string name="home_text_assets">assets</string>
-    <string name="new_portfolio">New Portfolio\n</string>
+    <string name="new_portfolio">New Portfolio</string>
     <string name="asset_delete">Delete asset</string>
 </resources>
