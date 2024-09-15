@@ -56,6 +56,7 @@ dependencies {
     implementation platform(libs.androidx.compose.bom)
     implementation libs.androidx.ui.tooling.preview.android
     implementation libs.androidx.runtime.livedata
+    debugImplementation libs.ui.tooling
     kapt libs.androidx.room.compiler
     implementation libs.androidx.room.runtime
     annotationProcessor libs.androidx.room.compiler
