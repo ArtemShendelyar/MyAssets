@@ -49,12 +49,12 @@ class AssetListFragment : Fragment() {
     @Composable
     fun AssetListScreen() {
         val portfolioItemsList by viewModel.portfolioItemsList.observeAsState()
-        PortfolioListContent(
+        PortfolioItemListContent(
             portfolioItemsList
         )
     }
     @Composable
-    fun PortfolioListContent(
+    fun PortfolioItemListContent(
         portfolioItemsList: List<PortfolioItem>?,
     ) {
         Column(
@@ -82,7 +82,7 @@ class AssetListFragment : Fragment() {
                         .padding(top = 8.dp)
                 ) {
                     items(portfolioItemsList) {
-                        PortfolioCard(it)
+                        PortfolioItemCard(it)
                     }
                 }
             }
@@ -90,7 +90,7 @@ class AssetListFragment : Fragment() {
     }
 
     @Composable
-    fun PortfolioCard(
+    fun PortfolioItemCard(
         portfolioItem: PortfolioItem
     ) {
         Card(
