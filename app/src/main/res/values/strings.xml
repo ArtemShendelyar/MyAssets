@@ -21,6 +21,7 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="cancel">Cancel</string>
+    <string name="new_name">New name</string>
     <string name="loading">Loading…</string>
     <string name="error">Something went wrong: </string>
     <string name="portfolio_delete_confirmation">Delete this portfolio? This action cannot be undone!</string>
@@ -30,6 +31,6 @@
     <string name="home_text_now">Now you have:</string>
     <string name="home_text_portfolios">portfolios</string>
     <string name="home_text_assets">assets</string>
-    <string name="new_portfolio">New Portfolio\n</string>
+    <string name="new_portfolio">New Portfolio</string>
     <string name="asset_delete">Delete asset</string>
 </resources>
